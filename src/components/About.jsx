@@ -27,11 +27,12 @@ const About = () => (
 
         <a
           href="/cv.pdf"
-          download
+          download="Pramoddya_Kathriarachchi_CV.pdf"
           className="px-8 py-4 text-lg font-semibold transition-colors duration-300 border-2 border-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white"
         >
           Download CV
         </a>
+
       </div>
     </div>
   </section>
