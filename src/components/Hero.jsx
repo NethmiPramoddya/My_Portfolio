@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative text-white py-32 flex items-center"
+      className="relative flex items-center py-24 text-white md:py-32"
       style={{
         backgroundImage: `url(${heroBg})`,
         backgroundSize: "cover",
@@ -15,26 +15,26 @@ const Hero = () => {
       {/* Overlay for better readability */}
       <div className="absolute inset-0 bg-black/50"></div>
 
-      <div className="relative max-w-5xl px-8 md:px-16 flex flex-col md:items-start items-center text-left">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 opacity-90 drop-shadow-md">
+      <div className="relative flex flex-col items-center max-w-5xl px-6 text-center md:px-16 md:items-start md:text-left">
+        <h1 className="mb-3 text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl sm:mb-4 opacity-90 drop-shadow-md">
           Hi, I am
         </h1>
-        <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold bg-gradient-to-r from-white to-gray-100 bg-clip-text text-transparent mb-4 drop-shadow-lg mt-5">
+        <h2 className="mt-3 mb-3 text-4xl font-extrabold text-transparent sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-white to-gray-100 bg-clip-text sm:mb-4 drop-shadow-lg sm:mt-5">
           Nethmi Pramoddya
         </h2>
-        <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 drop-shadow-md">
+        <h3 className="mb-4 text-xl font-semibold sm:text-2xl md:text-3xl lg:text-4xl sm:mb-6 drop-shadow-md">
           Full Stack Developer
         </h3>
-        <p className="max-w-xl text-lg md:text-xl lg:text-2xl mb-8 opacity-90 drop-shadow-md">
+        <p className="max-w-xl mb-6 text-base sm:text-lg md:text-xl lg:text-2xl sm:mb-8 opacity-90 drop-shadow-md">
           Passionate about creating secure, scalable, and user-friendly web applications.
           Explore my projects and skills below to see what I can do.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap justify-center gap-4 md:justify-start">
           <a
             href="#projects"
-            className="bg-white text-indigo-600 font-semibold px-8 py-4 rounded-full shadow-lg hover:-translate-y-2 transition-transform duration-300"
+            className="px-6 py-3 font-semibold text-indigo-600 transition-transform duration-300 bg-white rounded-full shadow-lg sm:px-8 sm:py-4 hover:-translate-y-1 sm:hover:-translate-y-2"
           >
             View Projects
           </a>

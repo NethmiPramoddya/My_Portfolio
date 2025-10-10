@@ -2,7 +2,6 @@ import React from "react";
 
 const HireMeSection = () => {
   const handleHireClick = () => {
-    // Find the contact section and scroll to it smoothly
     const contactSection = document.getElementById("contact");
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
@@ -10,10 +9,10 @@ const HireMeSection = () => {
   };
 
   return (
-    <section className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:-translate-y-1 text-white py-16 mx-20 rounded-xl h-[100px] flex items-center justify-center">
-      <div className="container flex flex-col items-center justify-between px-6 mx-auto md:flex-row">
+    <section className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:-translate-y-1 text-white py-16 px-4 sm:px-6 md:px-20 rounded-xl h-auto sm:h-[100px] flex items-center justify-center mx-5">
+      <div className="container flex flex-col items-center justify-between mx-auto md:flex-row">
         {/* Text Section */}
-        <div className="mb-6 text-center md:text-left md:mb-0">
+        <div className="mb-6 text-center md:mb-0 md:text-left">
           <h2 className="mb-2 text-xl font-bold md:text-3xl">
             Want to work with me?
           </h2>

@@ -1,10 +1,9 @@
 // src/components/Projects.jsx
 import { useRef } from "react";
-import BMH from "../assets/BMH_bg.png"
-import Glam from "../assets/Glam.png"
-import TPB from "../assets/TPBbg.png"
-import survey from "../assets/SurvayBg.png"
-
+import BMH from "../assets/BMH_bg.png";
+import Glam from "../assets/Glam.png";
+import TPB from "../assets/TPBbg.png";
+import survey from "../assets/SurvayBg.png";
 
 const projects = [
   {
@@ -30,7 +29,7 @@ const projects = [
     title: "The Perfect Buddy Tennis Community(TPB)",
     description: "Collaborated on a full-stack tennis community platform that connected 100+ players through game hosting, join requests, and a player ranking system",
     image: TPB,
-    tech: [ "Supabase", "React", "JavaScript"],
+    tech: ["Supabase", "React", "JavaScript"],
     github: "https://github.com/mayuraabhayasinghe/tpb-tennis-community.git",
     demo: "https://tpb-tennis-community.vercel.app/",
   },
@@ -53,68 +52,68 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="">
-      <div className="max-w-6xl px-6 py-20 mx-auto text-center">
-        <h2 className="mb-8 text-3xl font-bold">My Projects</h2>
+    <section id="projects">
+      <div className="max-w-6xl px-4 py-16 mx-auto text-center sm:px-6 md:px-6 sm:py-20">
+        <h2 className="mb-6 text-2xl font-bold sm:mb-8 sm:text-3xl md:text-3xl">My Projects</h2>
 
         {/* Project Cards */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <div
               key={project.id}
-              className="p-5 transition bg-white shadow-md rounded-2xl hover:shadow-xl"
+              className="p-4 transition bg-white shadow-md sm:p-5 rounded-2xl hover:shadow-xl"
             >
               <img
                 src={project.image}
                 alt={project.title}
-                className="mb-4 rounded-xl"
+                className="object-cover w-full h-48 mb-4 sm:mb-6 rounded-xl sm:h-56"
               />
-              <h3 className="mb-2 text-xl font-semibold">{project.title}</h3>
-              <p className="mb-4 text-gray-600">{project.description}</p>
+              <h3 className="mb-2 text-lg font-semibold sm:text-xl">{project.title}</h3>
+              <p className="mb-4 text-sm text-gray-600 sm:text-base">{project.description}</p>
               <button
                 onClick={() => scrollToProject(project.id)}
-                className="inline-block px-4 py-2 text-white transition rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:-translate-y-1"
+                className="inline-block px-4 py-2 text-sm text-white transition rounded-full sm:text-base bg-gradient-to-r from-indigo-500 to-purple-600 hover:-translate-y-1"
               >
-                View Details 
+                View Details
               </button>
             </div>
           ))}
         </div>
 
         {/* Project Details Sections */}
-        <div className="mt-20">
+        <div className="mt-12 sm:mt-20">
           {projects.map((project) => (
             <div
               key={project.id}
               ref={(el) => (projectRefs.current[project.id] = el)}
-              className="min-h-screen px-6 py-20 mb-10 shadow-md bg-gray-50 rounded-2xl"
+              className="px-4 sm:px-6 md:px-8 py-8 sm:py-12 mb-8 sm:mb-10 shadow-md bg-gray-50 rounded-2xl min-h-[auto] md:min-h-screen"
             >
               <img
                 src={project.image}
                 alt={project.title}
-                className="mb-8 shadow-md rounded-2xl"
+                className="object-cover w-full mb-6 shadow-md sm:mb-8 rounded-2xl max-h-64 sm:max-h-96"
               />
-              <h1 className="mb-4 text-4xl font-bold">{project.title}</h1>
-              <p className="mb-6 text-gray-700">{project.description}</p>
+              <h1 className="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">{project.title}</h1>
+              <p className="mb-6 text-sm text-gray-700 sm:text-base md:text-lg">{project.description}</p>
               <div className="mb-6">
-                <h3 className="mb-2 font-semibold">Technologies Used:</h3>
-                <div className="flex flex-wrap items-center justify-center gap-2">
+                <h3 className="mb-2 text-sm font-semibold sm:text-base">Technologies Used:</h3>
+                <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-start md:flex md:items-center md:justify-center">
                   {project.tech.map((t) => (
                     <span
                       key={t}
-                      className="px-3 py-1 text-sm text-indigo-700 bg-indigo-100 rounded-full"
+                      className="px-2 py-1 text-xs text-indigo-700 bg-indigo-100 rounded-full sm:px-3 sm:text-sm"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
               </div>
-              <div className="flex items-center justify-center gap-4">
+              <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:justify-start sm:gap-4 md:flex md:items-center md:justify-center">
                 <a
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 text-white transition bg-indigo-600 rounded-full hover:bg-indigo-700"
+                  className="px-4 py-2 text-sm text-white transition bg-indigo-600 rounded-full sm:text-base hover:bg-indigo-700"
                 >
                   Live Demo
                 </a>
@@ -122,7 +121,7 @@ const Projects = () => {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 text-indigo-600 transition border-2 border-indigo-600 rounded-full hover:bg-indigo-50"
+                  className="px-4 py-2 text-sm text-indigo-600 transition border-2 border-indigo-600 rounded-full sm:text-base hover:bg-indigo-50"
                 >
                   GitHub
                 </a>

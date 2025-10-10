@@ -15,7 +15,10 @@ const About = () => (
 
       {/* Text content on the right */}
       <div className="w-full text-center md:w-1/2 md:text-left md:-ml-20">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 relative after:content-[''] after:block after:w-24 after:h-1 after:bg-gradient-to-r from-indigo-500 to-purple-600 after:mt-3">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 relative 
+                       after:content-[''] after:block after:w-24 after:h-1 
+                       after:bg-gradient-to-r from-indigo-500 to-purple-600 
+                       after:mt-3 after:mx-auto md:after:mx-0">
           Who Am I?
         </h2>
         <h3 className="mb-4 text-2xl font-semibold text-indigo-600">About Me</h3>
