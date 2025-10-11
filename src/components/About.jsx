@@ -29,7 +29,7 @@ const About = () => (
         </p>
 
         <a
-          href="/cv.pdf"
+          href="/Nethmi_Pramoddya_SE_Intern.pdf"
           download="Nethmi_Pramoddya_SE_Intern.pdf"
           className="px-8 py-4 text-lg font-semibold transition-colors duration-300 border-2 border-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white"
         >
