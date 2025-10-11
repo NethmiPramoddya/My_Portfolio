@@ -4,6 +4,7 @@ import BMH from "../assets/BMH_bg.png";
 import Glam from "../assets/Glam.png";
 import TPB from "../assets/TPBbg.png";
 import survey from "../assets/SurvayBg.png";
+import HireMeSection from "./HireMeSection";
 
 const projects = [
   {
@@ -57,7 +58,7 @@ const Projects = () => {
         <h2 className="mb-6 text-2xl font-bold sm:mb-8 sm:text-3xl md:text-3xl">My Projects</h2>
 
         {/* Project Cards */}
-        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 mb-20 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <div
               key={project.id}
@@ -79,6 +80,8 @@ const Projects = () => {
             </div>
           ))}
         </div>
+
+         <HireMeSection />
 
         {/* Project Details Sections */}
         <div className="mt-12 sm:mt-20">
