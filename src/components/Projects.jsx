@@ -1,10 +1,9 @@
 // src/components/Projects.jsx
-import { useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import BMH from "../assets/BMH_bg.png";
 import Glam from "../assets/Glam.png";
 import TPB from "../assets/TPBbg.png";
 import survey from "../assets/SurvayBg.png";
-import HireMeSection from "./HireMeSection";
 
 const projects = [
   {
@@ -15,6 +14,8 @@ const projects = [
     tech: ["MongoDB", "Express", "React", "Node.js"],
     github: "https://github.com/NethmiPramoddya/Bring-Me-Home-web-app-Capstone-Group21.git",
     demo: "https://www.linkedin.com/posts/nethmi-kathriarachchi-916bb7328_mern-capstoneproject-fullstackdevelopment-activity-7381304460368728064-DIwz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFLCc2IBxLX4mcOGiVe7p5sZQ6XG3RoV3mo",
+    gradient: "from-gray-700 to-gray-900",
+    category: "Full Stack"
   },
   {
     id: 2,
@@ -24,6 +25,8 @@ const projects = [
     tech: ["MongoDB", "Express", "React", "Node.js"],
     github: "https://github.com/NethmiPramoddya/Shopping_app.git",
     demo: "https://shopping-app-bay-eta.vercel.app/",
+    gradient: "from-gray-600 to-gray-800",
+    category: "E-Commerce"
   },
   {
     id: 3,
@@ -33,6 +36,8 @@ const projects = [
     tech: ["Supabase", "React", "JavaScript"],
     github: "https://github.com/mayuraabhayasinghe/tpb-tennis-community.git",
     demo: "https://tpb-tennis-community.vercel.app/",
+    gradient: "from-slate-600 to-slate-800",
+    category: "Community"
   },
   {
     id: 4,
@@ -42,92 +47,164 @@ const projects = [
     tech: ["MongoDB", "Express", "React", "Node.js"],
     github: "https://github.com/ThashmikaRathnayake/Circuit-Bungalows-Booking-System.git",
     demo: "https://www.linkedin.com/posts/nethmi-kathriarachchi-916bb7328_webdevelopment-fullstack-reactjs-activity-7382449901869248512-m17f?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFLCc2IBxLX4mcOGiVe7p5sZQ6XG3RoV3mo",
+    gradient: "from-zinc-600 to-zinc-800",
+    category: "Management"
   },
 ];
 
 const Projects = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
   const projectRefs = useRef({});
 
-  const scrollToProject = (id) => {
-    projectRefs.current[id]?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section id="projects">
-      <div className="max-w-6xl px-4 py-16 mx-auto text-center sm:px-6 md:px-6 sm:py-20">
-        <h2 className="mb-6 text-2xl font-bold sm:mb-8 sm:text-3xl md:text-3xl">My Projects</h2>
-
-        {/* Project Cards */}
-        <div className="grid gap-6 mb-20 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              className="p-4 transition bg-white shadow-md sm:p-5 rounded-2xl hover:shadow-xl"
-            >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="object-cover w-full h-48 mb-4 sm:mb-6 rounded-xl sm:h-56"
-              />
-              <h3 className="mb-2 text-lg font-semibold sm:text-xl">{project.title}</h3>
-              <p className="mb-4 text-sm text-gray-600 sm:text-base">{project.description}</p>
-              <button
-                onClick={() => scrollToProject(project.id)}
-                className="inline-block px-4 py-2 text-sm text-white transition rounded-full sm:text-base bg-gradient-to-r from-indigo-500 to-purple-600 hover:-translate-y-1"
-              >
-                View Details
-              </button>
+    <section 
+      ref={sectionRef}
+      id="projects" 
+      className="relative pt-16 pb-8 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50/20"
+    >
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 rounded-full w-72 h-72 bg-gradient-to-br from-blue-200/20 to-purple-200/20 mix-blend-multiply filter blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-0 right-0 rounded-full w-96 h-96 bg-gradient-to-br from-purple-200/20 to-pink-200/20 mix-blend-multiply filter blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      
+      <div className="relative px-6 mx-auto max-w-7xl">
+        
+        {/* Header Section */}
+        <div className="mb-8 text-center">
+          <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="inline-flex items-center px-4 py-2 mb-4 space-x-2 text-sm font-medium text-blue-700 border rounded-full shadow-sm bg-white/80 backdrop-blur-sm border-blue-200/50">
+              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+              <span>My Work</span>
             </div>
-          ))}
+            
+            <h2 className="mb-4 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+              Featured 
+              <span className="ml-3 text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text">
+                Projects
+              </span>
+            </h2>
+            
+            <div className="w-24 h-1 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-500"></div>
+          </div>
         </div>
 
-         <HireMeSection />
-
-        {/* Project Details Sections */}
-        <div className="mt-12 sm:mt-20">
+        {/* Enhanced Project Details Sections */}
+        <div className="space-y-6">
           {projects.map((project) => (
             <div
               key={project.id}
               ref={(el) => (projectRefs.current[project.id] = el)}
-              className="px-4 sm:px-6 md:px-8 py-8 sm:py-12 mb-8 sm:mb-10 shadow-md bg-gray-50 rounded-2xl min-h-[auto] md:min-h-screen"
+              className="relative"
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="object-cover w-full mb-6 shadow-md sm:mb-8 rounded-2xl max-h-64 sm:max-h-96"
-              />
-              <h1 className="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">{project.title}</h1>
-              <p className="mb-6 text-sm text-gray-700 sm:text-base md:text-lg">{project.description}</p>
-              <div className="mb-6">
-                <h3 className="mb-2 text-sm font-semibold sm:text-base">Technologies Used:</h3>
-                <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-start md:flex md:items-center md:justify-center">
-                  {project.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="px-2 py-1 text-xs text-indigo-700 bg-indigo-100 rounded-full sm:px-3 sm:text-sm"
-                    >
-                      {t}
-                    </span>
-                  ))}
+              <div className="overflow-hidden border shadow-xl bg-white/90 backdrop-blur-sm rounded-3xl border-white/20">
+                
+                {/* Project Header */}
+                <div className={`bg-gradient-to-r ${project.gradient} p-3 md:p-4 text-white relative overflow-hidden`}>
+                  <div className="relative z-10 flex items-center justify-between">
+                    <div>
+                      <div className="mb-1 text-xs font-medium tracking-wider uppercase text-white/80">
+                        {project.category} Project
+                      </div>
+                      <h1 className="text-xl font-bold md:text-2xl">
+                        {project.title}
+                      </h1>
+                    </div>
+                    <div className="text-3xl font-bold md:text-4xl text-white/10">
+                      {String(project.id).padStart(2, '0')}
+                    </div>
+                  </div>
+                  {/* Decorative Element */}
+                  <div className="absolute top-0 right-0 w-32 h-32 transform translate-x-16 -translate-y-16 rounded-full bg-white/10"></div>
                 </div>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:justify-start sm:gap-4 md:flex md:items-center md:justify-center">
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 text-sm text-white transition bg-indigo-600 rounded-full sm:text-base hover:bg-indigo-700"
-                >
-                  Live Demo
-                </a>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 text-sm text-indigo-600 transition border-2 border-indigo-600 rounded-full sm:text-base hover:bg-indigo-50"
-                >
-                  GitHub
-                </a>
+                
+                {/* Project Content */}
+                <div className="p-6 md:p-8">
+                  <div className="grid items-start gap-8 lg:grid-cols-2">
+                    
+                    {/* Image */}
+                    <div className="relative">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full shadow-lg rounded-2xl"
+                      />
+                    </div>
+                    
+                    {/* Project Details */}
+                    <div className="space-y-6">
+                      
+                      <div>
+                        <h3 className="mb-3 text-xl font-bold text-gray-900">About This Project</h3>
+                        <p className="leading-relaxed text-gray-700">
+                          {project.description}
+                        </p>
+                      </div>
+                      
+                      {/* Technologies */}
+                      <div>
+                        <h3 className="mb-3 text-lg font-bold text-gray-900">Built With</h3>
+                        <div className="grid grid-cols-2 gap-2">
+                          {project.tech.map((tech) => (
+                            <div key={tech} className="flex items-center p-3 space-x-3 transition-colors rounded-lg bg-gray-50 hover:bg-gray-100">
+                              <div className={`w-2 h-2 bg-gradient-to-r ${project.gradient} rounded-full`}></div>
+                              <span className="text-sm font-medium text-gray-800">{tech}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {/* Action Buttons */}
+                      <div className="flex flex-col gap-3 pt-4 sm:flex-row">
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center flex-1 px-6 py-3 space-x-2 font-semibold text-white transition-all duration-300 shadow-lg group bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl hover:shadow-xl hover:-translate-y-1"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                          <span>Live Demo</span>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </a>
+                        
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center flex-1 px-6 py-3 space-x-2 font-semibold text-gray-700 transition-all duration-300 bg-white border-2 border-gray-300 rounded-lg group hover:border-gray-400 hover:text-gray-800 hover:bg-gray-50"
+                        >
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                          </svg>
+                          <span>View Code</span>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

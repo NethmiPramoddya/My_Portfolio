@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
+import HireMeSection from "./components/HireMeSection";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import { Toaster } from "react-hot-toast";
@@ -15,7 +16,8 @@ function App() {
       <Hero />
       <About />
       <Skills />
-      <Projects />    
+      <Projects />
+      <HireMeSection />    
       <Contact />
       <Footer />
     </div>
