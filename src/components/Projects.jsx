@@ -1,7 +1,7 @@
 // src/components/Projects.jsx
 import { useState, useEffect, useRef } from "react";
 import BMH from "../assets/BMH_bg.png";
-import Glam from "../assets/Glam.png";
+import Glam from "../assets/Glamore.png";
 import TPB from "../assets/TPBbg.png";
 import survey from "../assets/SurvayBg.png";
 
